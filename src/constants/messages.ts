@@ -1,0 +1,111 @@
+const MESSAGES = {
+  AUTH_PAGE: {
+    TITLE: {
+      LOGIN: 'Login',
+      SIGNUP: 'Sign up',
+    },
+    FIELD: {
+      NAME: 'Name',
+      EMAIL: 'Email',
+      PASSWORD: 'Password',
+    },
+  },
+  VALIDATION: {
+    NAME_IS_REQUIRED: 'Name is required',
+    EMAIL_IS_REQUIRED: 'Email is required',
+    EMAIL_INVALID: 'Please enter a valid email',
+    PASSWORD_IS_REQUIRED: 'Password is required',
+    PASSWORD_MIN_LENGTH: 'Password must be at least 6 characters',
+    PASSWORD_WEAK: 'Password must include letters, numbers, and symbols',
+    TITLE_REQUIRED: 'Title is required',
+    TITLE_MIN_LENGTH: 'Title must be at least 3 characters',
+    TITLE_MAX_LENGTH: 'Title cannot exceed 100 characters',
+    CONTENT_REQUIRED: 'Content is required',
+    CONTENT_MIN_LENGTH: 'Content must be at least 10 characters',
+    CONTENT_MAX_LENGTH: 'Content cannot exceed 500 characters',
+    STATUS_REQUIRED: 'Status is required',
+  },
+  APP: {
+    TITLE: 'Content Publisher',
+    WELCOME: 'Welcome to Content Publisher',
+    LOADING: 'Loading...',
+    SKIP_TO_MAIN_CONTENT: 'Skip to main content',
+  },
+  PUBLIC: {
+    TITLE: 'Public Publications',
+  },
+  NAVIGATION: {
+    HOME: 'Home',
+    DASHBOARD: 'Dashboard',
+    LOGIN: 'Login',
+    LOGOUT: 'Logout',
+  },
+  DASHBOARD: {
+    TITLE: 'Your Publications',
+    SEARCH_PLACEHOLDER: 'Search by title',
+    ALL_STATUSES: 'All Statuses',
+    SHOW_DELETED: 'Show Deleted',
+    NO_PUBLICATIONS: 'No publications found.',
+    NO_MORE: 'No more publications.',
+    SELECTED_TAG: 'SELECTED',
+  },
+  BUTTONS: {
+    NEW_PUBLICATION: 'New Publication',
+    EDIT: 'Edit',
+    DELETE: 'Delete',
+    DELETE_SELECTED: 'Delete Selected',
+    UNDO_DELETED: 'Undo Deleted',
+    SAVE: 'Save',
+    CREATE: 'Create',
+    CANCEL: 'Cancel',
+    CONFIRM: 'Confirm',
+    RETRY: 'Retry',
+    LOGIN: 'Login',
+    SIGNUP: 'Create account',
+    SWITCH_TO_SIGNUP: "Don't have an account? Sign up",
+    SWITCH_TO_LOGIN: 'Have an account? Login',
+    LOADING: 'Please wait...',
+  },
+  PLACEHOLDER: {
+    SEARCH: 'Search',
+  },
+  MODAL: {
+    NEW_TITLE: 'New Publication',
+    EDIT_TITLE: 'Edit Publication',
+    FIELD_TITLE: 'Title',
+    FIELD_CONTENT: 'Content',
+    FIELD_STATUS: 'Status',
+  },
+  AUTH: {
+    SESSION_EXPIRED: 'Your session has expired. Please log in again.',
+    LOGIN_SUCCESS: 'Logged in successfully',
+    LOGOUT_SUCCESS: 'Logged out successfully',
+  },
+  ERRORS: {
+    GENERIC: 'Something went wrong',
+    NETWORK: 'Network error. Please try again.',
+    FORBIDDEN: 'You do not have permission to perform this action.',
+    NOT_FOUND: 'The requested resource was not found.',
+  },
+  PUBLICATIONS: {
+    CREATE_SUCCESS: 'Publication created successfully',
+    UPDATE_SUCCESS: 'Publication updated successfully',
+    DELETE_CONFIRM: 'Delete this publication?',
+    DELETE_SUCCESS: 'Publication deleted successfully',
+    CONFIRM_BULK_DELETE_TITLE: 'Delete selected publications',
+    CONFIRM_BULK_DELETE_DESC: 'This will permanently delete the selected publications.',
+    CONFIRM_DELETE_TITLE: 'Delete publication',
+    CONFIRM_DELETE_DESC: 'This will permanently delete the publication.',
+    UNDO_DELETE_SUCCESS: 'Publication undone successfully',
+  },
+  HOOKS: {
+    TOAST: {
+      USE_TOAST: 'useToast must be used within ToastProvider',
+    },
+    AUTH: {
+      USE_AUTH: 'useAuth must be used within AuthProvider',
+    },
+  },
+};
+
+export default MESSAGES;
