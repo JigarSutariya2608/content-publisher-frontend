@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { PublicationStatusType } from 'src/types';
 import MESSAGES from '@constants/messages';
 import SearchBar from '@components/common/search_bar/search_bar';
-import { PUBLICATION_STATUS } from '@constants/config';
+import { PUBLICATION_STATUS_OPTIONS } from '@constants/options';
 
 interface Props {
   search: string;
@@ -33,11 +33,11 @@ const FiltersBar: React.FC<Props> = ({
 }) => {
   const handleSearch = useCallback((v: string) => onSearchChange(v), [onSearchChange]);
   const handleStatus = useCallback(
-    (v: '' | PublicationStatusType) => onStatusChange(v),
+    (event: React.ChangeEvent<HTMLSelectElement>) => onStatusChange(event.target.value as PublicationStatusType || ''),
     [onStatusChange]
   );
   const handleShowDeleted = useCallback(
-    (v: boolean) => onShowDeletedChange(v),
+    (event: React.ChangeEvent<HTMLInputElement>) => onShowDeletedChange(event.target.checked),
     [onShowDeletedChange]
   );
 
@@ -52,12 +52,15 @@ const FiltersBar: React.FC<Props> = ({
       <select
         className="input max-w-[180px] pr-10 appearance-none"
         value={status}
-        onChange={(e) => handleStatus(e.target.value as any)}
+        onChange={handleStatus}
         aria-label={MESSAGES.DASHBOARD.ALL_STATUSES}
       >
         <option value="">{MESSAGES.DASHBOARD.ALL_STATUSES}</option>
-        <option value={PUBLICATION_STATUS.DRAFT}>{PUBLICATION_STATUS.DRAFT}</option>
-        <option value={PUBLICATION_STATUS.PUBLISHED}>{PUBLICATION_STATUS.PUBLISHED}</option>
+        {PUBLICATION_STATUS_OPTIONS.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
       </select>
       <label
         className="flex items-center gap-1 text-sm"
@@ -66,7 +69,7 @@ const FiltersBar: React.FC<Props> = ({
         <input
           type="checkbox"
           checked={showDeleted}
-          onChange={(e) => handleShowDeleted(e.target.checked)}
+          onChange={handleShowDeleted}
         />
         {MESSAGES.DASHBOARD.SHOW_DELETED}
       </label>

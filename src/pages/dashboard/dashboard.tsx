@@ -252,6 +252,11 @@ const DashboardPage = () => {
     setModalOpen(false);
   };
 
+  const handleShowDeletedChange = (v: boolean) => {
+    setSelected(new Map());
+    setShowDeleted(v);
+  };
+
   return (
     <>
       <div className="space-y-4">
@@ -268,7 +273,7 @@ const DashboardPage = () => {
           status={status}
           onStatusChange={handleStatusChange}
           showDeleted={showDeleted}
-          onShowDeletedChange={setShowDeleted}
+          onShowDeletedChange={handleShowDeletedChange}
         />
 
         <SelectedPublications
