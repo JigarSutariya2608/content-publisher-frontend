@@ -12,6 +12,7 @@ import useToast from '@hooks/use_toast';
 import MESSAGES from '@constants/messages';
 import { loginSchema, signupSchema } from '@schemas/auth.schema';
 import { SignInSignUpFormType } from 'src/types';
+import { InputField } from '@components/common';
 
 const LoginPage = () => {
   const { login: setToken } = useAuth();
@@ -73,22 +74,24 @@ const LoginPage = () => {
       </h1>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 card">
         {isSignup && (
-          <div>
-            <label className="block mb-1">{MESSAGES.AUTH_PAGE.FIELD.NAME}</label>
-            <input className="input" {...register('name')} />
-            {errors.name && <span className="text-red-600">{errors.name.message}</span>}
-          </div>
+          <InputField
+            label={MESSAGES.AUTH_PAGE.FIELD.NAME}
+            registration={register('name')}
+            error={errors.name}
+          />
         )}
-        <div>
-          <label className="block mb-1">{MESSAGES.AUTH_PAGE.FIELD.EMAIL}</label>
-          <input type="email" className="input" {...register('email')} />
-          {errors.email && <span className="text-red-600">{errors.email.message}</span>}
-        </div>
-        <div>
-          <label className="block mb-1">{MESSAGES.AUTH_PAGE.FIELD.PASSWORD}</label>
-          <input type="password" className="input" {...register('password')} />
-          {errors.password && <span className="text-red-600">{errors.password.message}</span>}
-        </div>
+        <InputField
+          type="email"
+          label={MESSAGES.AUTH_PAGE.FIELD.EMAIL}
+          registration={register('email')}
+          error={errors.email}
+        />
+        <InputField
+          type="password"
+          label={MESSAGES.AUTH_PAGE.FIELD.PASSWORD}
+          registration={register('password')}
+          error={errors.password}
+        />
 
         <div className="flex flex-col items-center gap-2 md:flex-row">
           <Button type="submit" disabled={loading}>

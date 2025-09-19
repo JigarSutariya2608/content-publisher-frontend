@@ -8,6 +8,8 @@ import { PublicationFormType } from 'src/types';
 import { PUBLICATION_STATUS } from '@constants/config';
 import { BaseModal } from '@components/common/base_modal';
 import { publicationSchema } from '@schemas/publication.schema';
+import { InputField, SelectField, TextareaField } from '@components/common';
+import { PUBLICATION_STATUS_OPTIONS } from '@constants/options';
 
 interface Props {
   open: boolean;
@@ -55,42 +57,30 @@ const PublicationModal: FC<Props> = ({ open, isEdit, defaultValues, onClose, onS
       title={isEdit ? MESSAGES.MODAL.EDIT_TITLE : MESSAGES.MODAL.NEW_TITLE}
     >
       <form onSubmit={handleSubmit(submitHandler)} className="space-y-3">
-        <div>
-          <label className="block mb-1" htmlFor={titleId}>
-            {MESSAGES.MODAL.FIELD_TITLE}
-          </label>
-          <input id={titleId} className="input" {...register('title')} autoFocus />
-          {errors.title && <span className="text-red-600">{errors.title.message}</span>}
-        </div>
+        <InputField
+          id={titleId}
+          label={MESSAGES.MODAL.FIELD_TITLE}
+          registration={register('title')}
+          error={errors.title}
+          autoFocus
+        />
 
-        <div>
-          <label className="block mb-1" htmlFor={contentId}>
-            {MESSAGES.MODAL.FIELD_CONTENT}
-          </label>
-          <textarea
-            id={contentId}
-            className="input"
-            rows={5}
-            maxLength={500}
-            {...register('content')}
-          />
-          {errors.content && <span className="text-red-600">{errors.content.message}</span>}
-        </div>
+        <TextareaField
+          id={contentId}
+          label={MESSAGES.MODAL.FIELD_CONTENT}
+          registration={register('content')}
+          error={errors.content}
+          rows={5}
+          maxLength={500}
+        />
 
-        <div>
-          <label className="block mb-1" htmlFor={statusId}>
-            {MESSAGES.MODAL.FIELD_STATUS}
-          </label>
-          <select
-            id={statusId}
-            className="input max-w-full sm:max-w-[160px] pr-10 appearance-none"
-            {...register('status')}
-          >
-            <option value={PUBLICATION_STATUS.DRAFT}>{PUBLICATION_STATUS.DRAFT}</option>
-            <option value={PUBLICATION_STATUS.PUBLISHED}>{PUBLICATION_STATUS.PUBLISHED}</option>
-          </select>
-          {errors.status && <span className="text-red-600">{errors.status.message}</span>}
-        </div>
+        <SelectField
+          id={statusId}
+          label={MESSAGES.MODAL.FIELD_STATUS}
+          registration={register('status')}
+          error={errors.status}
+          options={PUBLICATION_STATUS_OPTIONS}
+        />
 
         <div className="flex gap-2 justify-end">
           <Button
